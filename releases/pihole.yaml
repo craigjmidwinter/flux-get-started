@@ -1,0 +1,17 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: ghost
+  namespace: demo
+  annotations:
+    fluxcd.io/automated: "false"
+    fluxcd.io/tag.chart-image: glob:3.1.1-debian-9-*
+spec:
+  releaseName: pihole
+  chart:
+    repository: https://mojo2600.github.io/pihole-kubernetes/
+    name: pihole
+    version: 1.7.14
+  values:
+    adminPassword: "test"
